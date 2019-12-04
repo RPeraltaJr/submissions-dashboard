@@ -1,0 +1,50 @@
+@import 'https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css';
+@import 'https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css';
+@import 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css';
+@import 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css';
+@import 'https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css';
+
+body,
+input[type=text],
+input[type=search],
+table.dataTable tbody tr {
+    background: #F1F1F1;
+}
+
+input[type=text],
+input[type=search] {
+    border: 1px solid #7e8993
+}
+
+.sdb__container {
+    padding-right: 1.5rem;
+}
+
+.sdb__title {
+    font-size: 23px;
+    line-height: 30px;
+    font-weight: 400;
+    color: #23282d;
+}
+
+/* override dataTables styles */
+table.dataTable tbody th, 
+table.dataTable tbody td {
+    padding: 15px 10px;
+}
+
+.dataTables_wrapper .dataTables_filter input,
+select {
+    border-radius: 0.25rem;
+    min-height: 32px;
+}
+
+.dataTables_wrapper .dataTables_length,
+div.dt-buttons,
+table.dataTable.no-footer {
+    margin-bottom: 1rem;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current { 
+    background: none;
+}
