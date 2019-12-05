@@ -3,6 +3,18 @@
         max-width: 300px;
         width: 100%;
     }
+    .btn-primary {
+        background: #0073aa;
+        border-color: #0073aa;
+        font-size: 14px;
+    }
+    .btn-primary:hover,
+    .btn-primary:focus,
+    .btn-primary:target,
+    .btn-primary:active {
+        background: #0073aa;
+        border-color: #0073aa;
+    }
 </style>
 
 <?php 
@@ -20,8 +32,27 @@
         else:
             // process form data
             // TODO: Read the following link for more info - https://premium.wpmudev.org/blog/handling-form-submissions/
-            $response->type = "success";
-            $response->msg = "Table created!";
+
+            $table_name = $_POST['table_name'];
+            $query = "CREATE TABLE `$table_name` (
+                `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+                `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+                -- `first_name` varchar(50) NOT NULL,
+                -- `last_name` varchar(50) NOT NULL,
+                -- `phone` varchar(30) NOT NULL,
+                -- `email` varchar(60) NOT NULL,
+                -- `location` varchar(30) NOT NULL
+            ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
+            
+            if(maybe_create_table($table_name, $query)): 
+                $response->type = "danger";
+                $response->msg = "Table already exists.";
+            else:
+                $response->type = "success";
+                $response->msg = "Table <strong>$table_name</strong> created!";
+            endif;
+
+            
         endif;
         
     endif;
@@ -38,7 +69,12 @@
 
             <?php if( isset($response->msg) && $response->msg): ?>
                 <div class="col col-6">
-                    <div class="alert alert-success" role="alert"><?php echo $response->msg; ?></div>
+                    <div class="alert alert-<?php echo $response->type; ?> alert-dismissible fade show" role="alert">
+                        <?php echo $response->msg; ?>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
                 </div>
             <?php endif; ?>
 
@@ -56,8 +92,11 @@
                 </div>
             <?php else: ?>
                 <div class="col col-6">
-                    <div class="alert alert-danger" role="alert">
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
                         You are not authorized to access this plugin.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                 </div>
             <?php endif; ?>
