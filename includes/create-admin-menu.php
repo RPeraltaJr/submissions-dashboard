@@ -7,7 +7,8 @@ function sdb_admin_menu() {
         'Submissions',
         'Submissions', 
         'manage_options', 
-        plugin_dir_path(__FILE__) . '/admin/index.php',
+        // plugin_dir_path(__FILE__) . '/admin/index.php',
+        plugin_dir_path(__FILE__) . '/admin/view.php',
         null, 
         'dashicons-welcome-widgets-menus',
         20
