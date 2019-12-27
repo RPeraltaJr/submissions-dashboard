@@ -7,8 +7,8 @@
                 </div>
             </div>
             <div class="row">
-            
-                <?php $results = $wpdb->get_results("SELECT * FROM $submissions_table"); ?>
+                
+                <?php $results = $wpdb->get_results("SELECT * FROM $table_name"); ?>
 
                 <div class="container-fluid mt-1">
                     <div class="row no-gutters">
@@ -32,7 +32,7 @@
                                         <tr>
                                             <?php 
                                                 // An array of Field names
-                                                $existing_columns = $wpdb->get_col("DESC $submissions_table", 0);
+                                                $existing_columns = $wpdb->get_col("DESC $table_name", 0);
 
                                                 // TODO: Remove any unwanted columns from array
                                                 // array_diff( [312, 401, 15, 401, 3], [401] ) // removing 401 returns [312, 15, 3]
@@ -69,7 +69,7 @@
                                 </table>
                             <?php else: ?>
                                 <p>No data was found in this table.</p>
-                                <p><strong><?php echo $submissions_table; ?></strong></p>
+                                <p><strong><?php echo $table_name; ?></strong></p>
                             <?php endif; ?>
 
                         </div>

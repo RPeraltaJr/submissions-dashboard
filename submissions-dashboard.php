@@ -15,11 +15,7 @@ if( !defined('ABSPATH') ):
     exit;
 endif;
 
-$submissions_table = "submissions_test";
 require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
-
-// * Create table
-require_once(plugin_dir_path(__FILE__) . '/includes/create-db-table.php');
 
 // * Load scripts
 require_once(plugin_dir_path(__FILE__) . '/includes/load-scripts.php');
