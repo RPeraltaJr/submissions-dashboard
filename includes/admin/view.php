@@ -8,7 +8,9 @@
             </div>
             <div class="row">
                 
-                <?php $results = $wpdb->get_results("SELECT * FROM $table_name"); ?>
+                <?php 
+                global $wpdb;
+                $results = $wpdb->get_results("SELECT * FROM $table_name"); ?>
 
                 <div class="container-fluid mt-1">
                     <div class="row no-gutters">
